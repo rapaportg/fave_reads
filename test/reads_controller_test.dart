@@ -33,4 +33,15 @@ void main() {
     })));
   });
 
+  test('GET /reads/:id returns a single read', () async {
+    final response = await harness.agent.get('/reads/1');
+    expectResponse(response, 200, body: {
+      'id' : 1,
+      'title' : 'The Great Expectations',
+      'author' : 'Someone I. Shouldknow',
+      'year' : 1951,
+      'details' : 'The Great Expectations by Someone I. Shouldknow',
+    });
+  });
+
 }
